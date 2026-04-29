@@ -10,7 +10,7 @@ const api = axios.create({
 // Interceptor to add JSON Web Token to the headers of every request
 api.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('access_token');
+    const token = sessionStorage.getItem('access_token');
     if (token) {
       config.headers.Authorization = `Bearer ${token}`;
     }
@@ -25,9 +25,9 @@ api.interceptors.response.use(
   (error) => {
     // If 401 Unauthorized, clear local storage and redirect to login
     if (error.response && error.response.status === 401) {
-      localStorage.removeItem('access_token');
-      localStorage.removeItem('refresh_token');
-      localStorage.removeItem('user');
+      sessionStorage.removeItem('access_token');
+      sessionStorage.removeItem('refresh_token');
+      sessionStorage.removeItem('user');
       window.location.href = '/login';
     }
     return Promise.reject(error);

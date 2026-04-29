@@ -8,23 +8,23 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const token = localStorage.getItem('access_token');
-    const storedUser = localStorage.getItem('user');
+    const token = sessionStorage.getItem('access_token');
+    const storedUser = sessionStorage.getItem('user');
 
     if (token && storedUser) {
       try {
         setUser(JSON.parse(storedUser));
       } catch {
-        // Corrupted localStorage — clear everything
-        localStorage.removeItem('access_token');
-        localStorage.removeItem('refresh_token');
-        localStorage.removeItem('user');
+        // Corrupted sessionStorage — clear everything
+        sessionStorage.removeItem('access_token');
+        sessionStorage.removeItem('refresh_token');
+        sessionStorage.removeItem('user');
       }
     } else {
       // If only one exists (partial state), clear both to be safe
-      localStorage.removeItem('access_token');
-      localStorage.removeItem('refresh_token');
-      localStorage.removeItem('user');
+      sessionStorage.removeItem('access_token');
+      sessionStorage.removeItem('refresh_token');
+      sessionStorage.removeItem('user');
       setUser(null);
     }
     setLoading(false);
@@ -34,9 +34,9 @@ export const AuthProvider = ({ children }) => {
     const response = await api.post('/api/auth/login', { email, password });
     const { access_token, refresh_token, user: userData } = response.data;
     
-    localStorage.setItem('access_token', access_token);
-    localStorage.setItem('refresh_token', refresh_token);
-    localStorage.setItem('user', JSON.stringify(userData));
+    sessionStorage.setItem('access_token', access_token);
+    sessionStorage.setItem('refresh_token', refresh_token);
+    sessionStorage.setItem('user', JSON.stringify(userData));
     setUser(userData);
     return userData;
   };
@@ -45,17 +45,17 @@ export const AuthProvider = ({ children }) => {
     const response = await api.post('/api/auth/register', { name, email, password, role });
     const { access_token, refresh_token, user: userData } = response.data;
     
-    localStorage.setItem('access_token', access_token);
-    localStorage.setItem('refresh_token', refresh_token);
-    localStorage.setItem('user', JSON.stringify(userData));
+    sessionStorage.setItem('access_token', access_token);
+    sessionStorage.setItem('refresh_token', refresh_token);
+    sessionStorage.setItem('user', JSON.stringify(userData));
     setUser(userData);
     return userData;
   };
 
   const logout = () => {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('refresh_token');
-    localStorage.removeItem('user');
+    sessionStorage.removeItem('access_token');
+    sessionStorage.removeItem('refresh_token');
+    sessionStorage.removeItem('user');
     setUser(null);
   };
 
