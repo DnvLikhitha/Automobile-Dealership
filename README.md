@@ -2,7 +2,7 @@
 
 A comprehensive, modern web-based platform designed to digitize and streamline the end-to-end operations of an automobile dealership. This system provides an intuitive digital interface for vehicle sales, customer relationship management (CRM), service scheduling, and administrative reporting.
 
-## 🌟 Key Features
+## Key Features
 
 * **Role-Based Dashboards:** Specialized, secure interfaces for Customers, Sales Executives, Technicians, and Administrators.
 * **Vehicle Inventory Management:** Browse, filter, and manage a digital catalog of vehicles, complete with detailed specifications and 3D car models.
@@ -10,7 +10,7 @@ A comprehensive, modern web-based platform designed to digitize and streamline t
 * **Service & Maintenance:** Integrated calendar-based scheduling for service appointments, digital technician job cards, and full maintenance history tracking.
 * **Secure Authentication:** JWT-based stateless authentication with strict Role-Based Access Control (RBAC).
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 ### Frontend
 * **Framework:** React.js (Vite)
@@ -27,7 +27,7 @@ A comprehensive, modern web-based platform designed to digitize and streamline t
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### Prerequisites
 * Node.js (v16+)
@@ -68,12 +68,10 @@ A comprehensive, modern web-based platform designed to digitize and streamline t
    npm run dev
    ```
 
-## 👥 User Roles
+## User Roles
 
 1. **Admin:** Full system oversight, user management, inventory control, and analytics reporting.
 2. **Sales Executive:** Handles customer inquiries, test drive scheduling, and vehicle bookings.
 3. **Technician:** Manages service floor operations, updates job cards, logs diagnostics, and tracks repair status.
 4. **Customer:** Browses inventory, books test drives, schedules service appointments, and manages their profile/wishlist.
 
-## 📄 License
-This project is for academic/presentation purposes. All rights reserved.
