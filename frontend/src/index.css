@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #00adef;
+  --color-primary-dark: #007ab8;
+  --color-dark-bg: #0a0a0a;
+  --color-mb-black: #000000;
+  --color-mb-white: #ffffff;
+  --color-mb-gray: #f5f5f5;
+  --color-mb-mid: #333333;
+}
+
+@layer base {
+  :root {
+    --mb-transition: all 0.2s ease;
+  }
+
+  html, body {
+    @apply m-0 p-0 overflow-x-hidden antialiased;
+    background-color: #0a0a0a;
+    color: #ffffff;
+    font-family: 'Inter', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  #root {
+    @apply min-h-screen w-full relative;
+  }
+
+  /* Mega-menu slide-in animation */
+  @keyframes slideDown {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Infinite horizontal marquee for brands strip */
+  @keyframes marquee {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-33.333%); }
+  }
+
+  /* Custom scrollbar — slim, gray */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #111; }
+  ::-webkit-scrollbar-thumb { background: #444; border-radius: 2px; }
+  ::-webkit-scrollbar-thumb:hover { background: #00adef; }
+}
+
+@layer utilities {
+  /* ── Card Variants ─────────────────────────────────── */
+  .mb-card {
+    @apply bg-[#111111] border border-white/8 rounded-none;
+  }
+
+  .mb-card-white {
+    @apply bg-white border border-[#e0e0e0];
+    color: #000;
+  }
+
+  /* legacy aliases so dashboard code that uses glass-card still renders */
+  .glass-card {
+    @apply bg-[#111111] border border-white/8 rounded-xl shadow-xl;
+  }
+  .glass-panel {
+    @apply bg-[#0d0d0d] border-b border-white/10;
+  }
+
+  /* ── Typography ─────────────────────────────────────── */
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: linear-gradient(90deg, #00adef, #007ab8);
+  }
+
+  /* ── Buttons ──────────────────────────────────────── */
+  /* MB Blue filled button */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold uppercase tracking-widest transition-colors;
+    background-color: #00adef;
+    color: #fff;
+  }
+  .btn-primary:hover { background-color: #007ab8; }
+
+  /* MB outlined dark button (like "Make an enquiry") */
+  .btn-outline-dark {
+    @apply inline-flex items-center justify-center gap-2 px-6 py-3 text-sm font-bold uppercase tracking-widest transition-colors border;
+    background-color: transparent;
+    border-color: #fff;
+    color: #fff;
+  }
+  .btn-outline-dark:hover { background-color: rgba(255,255,255,0.1); }
+
+  /* ── Section dividers ─────────────────────────────── */
+  .mb-section-dark { @apply bg-[#0a0a0a]; }
+  .mb-section-light { background-color: #f5f5f5; color: #000; }
+
+  /* ── Sidebar nav link ─────────────────────────────── */
+  .mb-nav-link {
+    @apply flex items-center gap-4 px-4 py-3 text-sm font-medium uppercase tracking-widest transition-colors text-gray-400;
+  }
+  .mb-nav-link:hover { color: #00adef; border-left: 2px solid #00adef; }
+  .mb-nav-link-active { color: #00adef; border-left: 2px solid #00adef; }
+
+  /* ── Stat card ─────────────────────────────────────── */
+  .mb-stat-card {
+    @apply bg-[#111111] border-t-2 p-6 flex flex-col gap-1;
+    border-top-color: #00adef;
+  }
+}
